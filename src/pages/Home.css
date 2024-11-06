@@ -1,0 +1,53 @@
+.home-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 0 50px;
+}
+
+.column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.column1 {
+    align-items: flex-start; /* Left-align text */
+}
+
+.column1 h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5em;
+}
+
+.typing-space {
+    font-size: 1.5rem;
+    margin: 1em 0;
+    min-height: 1.5em; /* Keeps space even when empty */
+}
+
+.column1 p {
+    font-size: 1rem;
+    text-align: left;
+    margin-bottom: 1.5em;
+    max-width: 400px;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Center-align buttons */
+    margin-top: 1em;
+}
+
+.column2 .image-container {
+    display: block;
+    min-height: 250px;
+}
+
+.column2 .image {
+    max-width: 100%;
+    height: auto;
+}
