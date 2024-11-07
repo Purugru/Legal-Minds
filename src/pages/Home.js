@@ -44,14 +44,14 @@ const Home = () => {
                 <p>Legal Minds is your go-to platform for all things legal. Whether you need case management tools, 
                    insightful articles, or a community of legal professionals, we bring it all together.</p>
                 <div className="buttons">
-                <button style={{ height: '50px', width: '150px', backgroundColor: '#007bff', color: '#fff' }}>
+                <button style={{ height: '50px', width: '150px', backgroundColor: '#007bff', color: '#fff', borderRadius: '15px' }}>
                     <Link to="/new" style={{ color: '#fff', textDecoration: 'none' }}>Get Started</Link>
                 </button>
-                <button style={{ height: '50px', width: '150px', backgroundColor: '#6c757d', color: '#fff' }}>
+                <button style={{ height: '50px', width: '150px', backgroundColor: '#6c757d', color: '#fff', borderRadius: '15px' }}>
                     <Link to="/about" style={{ color: '#fff', textDecoration: 'none' }}>About Us</Link>
                 </button>
                 </div>
-            </div>
+            </div>q
             <div className="column column2">
                 <picture className="image-container">
                     <source srcSet="./home-illustration.webp" media="(min-width: 600px)" />

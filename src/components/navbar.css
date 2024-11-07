@@ -2,10 +2,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;  /* Full width of viewport */
+    width: 100vw;
     padding: 10px 50px;
     background-color: transparent;
-    border-bottom: 3px solid black; /* Black bottom margin */
+    border-bottom: 1px solid black;
     position: fixed;
     top: 0;
     left: 0;
