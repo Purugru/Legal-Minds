@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './New.css';
+import './Style.css';
 
 const App = () => {
   return (
