@@ -7,33 +7,38 @@ import About from './pages/About';
 import NewConversation from './pages/New';
 import ConversationHistory from './pages/History';
 import Navbar from './components/Navbar';
+import ProtectedRoutes from './ProtectedRoutes';
 
 function App() {
-  const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
-
   return (
-      <Router>
-          <Routes>
-              <Route path="/login" element={<AuthPage />} />
-              <Route
-                  path="*"
-                  element={isAuthenticated ? (
-                      <>
-                          <Navbar />
-                          <Routes>
-                              <Route path="/" element={<Home />} />
-                              <Route path="/home" element={<Home />} />
-                              <Route path="/about" element={<About />} />
-                              <Route path="/new" element={<NewConversation />} />
-                              <Route path="/history" element={<ConversationHistory />} />
-                          </Routes>
-                      </>
-                  ) : (
-                      <Navigate to="/login" />
-                  )}
-              />
-          </Routes>
-      </Router>
+    <Router>
+      <Routes>
+        {/* Public Route: Login */}
+        <Route path="/login" element={<AuthPage />} />
+
+        {/* Protected Routes */}
+        <Route element={<ProtectedRoutes />}>
+          <Route
+            path="*"
+            element={
+              <>
+                <Navbar />
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/home" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/new" element={<NewConversation />} />
+                  <Route path="/history" element={<ConversationHistory />} />
+                </Routes>
+              </>
+            }
+          />
+        </Route>
+
+        {/* Redirect any unknown routes to login */}
+        <Route path="*" element={<Navigate to="/login" />} />
+      </Routes>
+    </Router>
   );
 }
 

@@ -51,7 +51,7 @@ const Home = () => {
                     <Link to="/about" style={{ color: '#fff', textDecoration: 'none' }}>About Us</Link>
                 </button>
                 </div>
-            </div>q
+            </div>
             <div className="column column2">
                 <picture className="image-container">
                     <source srcSet="./home-illustration.webp" media="(min-width: 600px)" />

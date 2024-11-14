@@ -29,13 +29,17 @@
     color: #000;
 }
 
-.nav-right a {
+.nav-right a, .nav-right .logout-button {
     margin-left: 20px;
     text-decoration: none;
     color: #000;
     font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
 }
 
-.nav-right a:hover {
+.nav-right a:hover, .nav-right .logout-button:hover {
     color: #555;
 }

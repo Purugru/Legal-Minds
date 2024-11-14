@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Style.css';
+import './AuthPage.css';
 
 const AuthPage = () => {
     const [isActive, setIsActive] = useState(false);
