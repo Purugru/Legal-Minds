@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { v4 as uuidv4 } from 'uuid';  // Install uuid package with `npm install uuid`
-import './Style.css';
+import './Appuse.css';
 
 const App = () => {
   const [companyName, setCompanyName] = useState('');
@@ -101,7 +101,7 @@ const App = () => {
   };
 
   return (
-    <div className="container">
+    <div className="containerchat">
       <div className="fixed-background"></div>
       <motion.h1
         initial={{ opacity: 0, y: -50 }}
@@ -157,9 +157,9 @@ const App = () => {
             <button onClick={handleUserMessageSubmit} className="send-button">
               Send
             </button>
-          </div>
+          </div><br></br>
 
-          <button onClick={startNewSession} className="new-session-button">
+          <button onClick={startNewSession} className="send-button">
             Start New Session
           </button>
         </div>
