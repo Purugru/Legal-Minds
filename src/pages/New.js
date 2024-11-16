@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { v4 as uuidv4 } from 'uuid';  // Ensure you have installed the uuid package with `npm install uuid`
+import { v4 as uuidv4 } from 'uuid'; // Ensure you have installed the uuid package with `npm install uuid`
 import './Appuse.css';
 import axios from 'axios';
+import ReactMarkdown from 'react-markdown'; // Import react-markdown
 
 const App = () => {
   const [companyName, setCompanyName] = useState('');
@@ -200,7 +201,11 @@ const App = () => {
                 className={chat.sender === 'user' ? 'user-message' : 'bot-message'}
               >
                 <strong>{chat.sender === 'user' ? 'You: ' : 'Legal Mind: '}</strong>
-                {chat.message}
+                {chat.sender === 'bot' ? (
+                  <ReactMarkdown>{chat.message}</ReactMarkdown> // Render bot messages with markdown
+                ) : (
+                  chat.message
+                )}
               </div>
             ))}
           </div>
@@ -217,7 +222,7 @@ const App = () => {
             </button>
           </div>
 
-          <button onClick={startNewSession} className="new-session-button send-button">
+          <button onClick={startNewSession} className="new-session-button">
             Start New Session
           </button>
         </div>
