@@ -45,15 +45,11 @@ const About = () => {
             {/* Section 3: Social Handles Centered Below */}
             <div className="social-handles">
                 <a href="https://github.com" className="contact-btn github">
-                    <img src="github-logo.png" alt="GitHub Logo" width="20" height="20" />
+                    <img src="./gitimg.png" alt="GitHub Logo" width="20" height="20" />
                     GitHub
                 </a>
                 <a href="https://www.instagram.com" className="contact-btn instagram">
-                    <img src="instagram-logo.png" alt="Instagram Logo" width="20" height="20" />
-                    Instagram
-                </a>
-                <a href="mailto:contact@legalminds.com" className="contact-btn x">
-                    <img src="x-logo.png" alt="X Logo" width="20" height="20" />
+                    <img src="./email.svg" alt="Instagram Logo" width="20" height="20" />
                     Contact Us
                 </a>
             </div>
