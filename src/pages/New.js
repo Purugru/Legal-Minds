@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { v4 as uuidv4 } from 'uuid';  // Install uuid package with `npm install uuid`
+import { v4 as uuidv4 } from 'uuid';  // Ensure you have installed the uuid package with `npm install uuid`
 import './Appuse.css';
+import axios from 'axios';
 
 const App = () => {
   const [companyName, setCompanyName] = useState('');
@@ -51,25 +52,77 @@ const App = () => {
     }
   };
 
-  // Handle initial output when Analyze button is clicked
-  const handleAnalyze = () => {
-    if (companyName && companyDescription) {
+  // Handle initial analysis when Analyze button is clicked
+  const handleAnalyze = async () => {
+    if (companyName.trim() && companyDescription.trim()) {
       setIsSubmitted(true);
-      
-      const newSessionId = sessionId || uuidv4();  // Generate new session ID if none exists
+
+      // Generate a new session ID if none exists
+      const newSessionId = sessionId || uuidv4();
       setSessionId(newSessionId);
 
-      const initialResponse = `Hello! I'm here to assist you with details regarding ${companyName}.`;
-      const initialChatHistory = [{ sender: 'bot', message: initialResponse }];
-      
-      setChatResponse(initialResponse);
-      setChatHistory(initialChatHistory);
+      try {
+        const response = await axios.post('http://localhost:5001/analyze', {
+          company_name: companyName,
+          company_description: companyDescription,
+        });
 
-      saveChatSession(newSessionId, companyName, companyDescription, initialChatHistory);
+        if (response.data) {
+          if (response.data.result) {
+            const botMessage = response.data.result;
+            setChatResponse(botMessage);
+
+            // Update the chat history with user and bot messages
+            const updatedHistory = [
+              ...chatHistory,
+              { sender: 'user', message: `Company: ${companyName}, Description: ${companyDescription}` },
+              { sender: 'bot', message: botMessage },
+            ];
+            setChatHistory(updatedHistory);
+            saveChatSession(newSessionId, companyName, companyDescription, updatedHistory);
+          } else if (response.data.error) {
+            const errorMessage = `Error: ${response.data.error}`;
+            setChatResponse(errorMessage);
+
+            // Update the chat history with the error message
+            const updatedHistory = [
+              ...chatHistory,
+              { sender: 'user', message: `Company: ${companyName}, Description: ${companyDescription}` },
+              { sender: 'bot', message: errorMessage },
+            ];
+            setChatHistory(updatedHistory);
+            saveChatSession(newSessionId, companyName, companyDescription, updatedHistory);
+          }
+        }
+      } catch (error) {
+        console.error('Error while analyzing:', error);
+        const errorMessage = 'An error occurred while analyzing. Please try again.';
+        setChatResponse(errorMessage);
+
+        // Update the chat history with the error
+        const updatedHistory = [
+          ...chatHistory,
+          { sender: 'user', message: `Company: ${companyName}, Description: ${companyDescription}` },
+          { sender: 'bot', message: errorMessage },
+        ];
+        setChatHistory(updatedHistory);
+        saveChatSession(newSessionId, companyName, companyDescription, updatedHistory);
+      }
+    } else {
+      // Handle validation errors
+      const validationError = 'Please provide both company name and description.';
+      setChatResponse(validationError);
+
+      // Optionally, update chat history with validation error
+      const updatedHistory = [
+        ...chatHistory,
+        { sender: 'bot', message: validationError },
+      ];
+      setChatHistory(updatedHistory);
     }
   };
 
-  // Handle response to user messages after initial output
+  // Handle user messages after initial analysis
   const handleUserMessageSubmit = () => {
     if (userMessage.trim()) {
       const newChatHistory = [
@@ -77,7 +130,7 @@ const App = () => {
         { sender: 'user', message: userMessage },
       ];
 
-      // Placeholder bot response
+      // Placeholder bot response (you can replace this with actual logic or API calls)
       const botResponse = `You asked about "${userMessage}". I'll help with that soon!`;
       newChatHistory.push({ sender: 'bot', message: botResponse });
 
@@ -97,6 +150,8 @@ const App = () => {
     setCompanyDescription('');
     setChatHistory([]);
     setIsSubmitted(false);
+    setChatResponse('');
+    setUserMessage('');
     localStorage.removeItem('activeSession');
   };
 
@@ -119,11 +174,13 @@ const App = () => {
             placeholder="Enter Company Name"
             value={companyName}
             onChange={(e) => setCompanyName(e.target.value)}
+            className="input-field"
           />
           <motion.textarea
             placeholder="Enter Company Description"
             value={companyDescription}
             onChange={(e) => setCompanyDescription(e.target.value)}
+            className="textarea-field"
           />
           <motion.button
             onClick={handleAnalyze}
@@ -153,13 +210,14 @@ const App = () => {
               placeholder="Type your question here..."
               value={userMessage}
               onChange={(e) => setUserMessage(e.target.value)}
+              className="user-textarea"
             />
             <button onClick={handleUserMessageSubmit} className="send-button">
               Send
             </button>
-          </div><br></br>
+          </div>
 
-          <button onClick={startNewSession} className="send-button">
+          <button onClick={startNewSession} className="new-session-button send-button">
             Start New Session
           </button>
         </div>
