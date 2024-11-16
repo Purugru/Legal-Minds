@@ -222,7 +222,7 @@ const App = () => {
             </button>
           </div>
 
-          <button onClick={startNewSession} className="new-session-button">
+          <button onClick={startNewSession} className="new-session-button send-button">
             Start New Session
           </button>
         </div>
