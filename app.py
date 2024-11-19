@@ -43,24 +43,7 @@ def generate(company_name, company_description):
         "top_p": 0.95,
     }
 
-    safety_settings = [
-        SafetySetting(
-            category=SafetySetting.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-            threshold=SafetySetting.HarmBlockThreshold.OFF
-        ),
-        SafetySetting(
-            category=SafetySetting.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
-            threshold=SafetySetting.HarmBlockThreshold.OFF
-        ),
-        SafetySetting(
-            category=SafetySetting.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-            threshold=SafetySetting.HarmBlockThreshold.OFF
-        ),
-        SafetySetting(
-            category=SafetySetting.HarmCategory.HARM_CATEGORY_HARASSMENT,
-            threshold=SafetySetting.HarmBlockThreshold.OFF
-        ),
-    ]
+   
 
     responses = model.generate_content(
         [prompt, document],
