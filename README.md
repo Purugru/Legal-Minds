@@ -5,21 +5,72 @@ Problem Statement : Help Enterprises to identify and classify the laws most rele
 
 ## Steps to Setup
 
-In the project directory, you can run:
+### Cloning the Repository
 
-### `npm start`
+Navigate to your desired directory and clone the repository:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+`git clone https://github.com/Purugru/Legal-Minds.git`
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-## Code Sturcture
+### Installing Dependencies
+
+After cloning, navigate to the project directory using:
+
+`cd Legal-Minds`
+
+Then, install the required dependencies:
+
+`npm i`
+
+---
+
+### Running the Application
+
+To start the development server, run the following in the project directory:
+
+`npm start`
+
+This will start the application in development mode. Once started:
+
+- Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
+- The app will automatically reload if changes are made to the source files.
+- Any errors or issues will be displayed in the console.
+
+---
+
+### Debugging and Accessing More Details
+
+#### Debugging Tips:
+- Use **React Developer Tools**: Install this browser extension for a detailed view of components and state.
+- Insert `console.log()` statements in your code for runtime debugging. Check the browser's developer tools console for output.
+- Fix lint errors promptly; they will appear in the terminal and browser console.
+
+#### Common Issues:
+- Ensure your Node.js and npm versions are up-to-date.
+- For dependency issues, run:
+
+  `npm audit`
+
+- If changes don't reflect immediately, stop and restart the server using:
+
+  `Ctrl + C` (to stop) and `npm start` (to restart).
+
+---
+
+### Accessing More Details
+
+- Explore the `/src` folder for the project structure and code organization.
+- Inline comments in the code provide additional context and details.
+- Visit the [GitHub repository](https://github.com/Purugru/Legal-Minds) for the latest updates and documentation.
+
+---
+
+## Code Structure
 
 Backend - App.py
 
-Frontend :-
+Frontend:-
   - Sign-up
   - Sign-in
   - Home
