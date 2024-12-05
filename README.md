@@ -31,3 +31,27 @@ Frontend :-
 
 
 ## UI/UX Screen-shots
+
+## Signup
+![Signup Page](https://github.com/Purugru/Legal-Minds/blob/8caab41e5d8876148c0855bd02c5f5a6542ec610/ui/signup.png)
+
+## Sign In
+![Sign In Page](https://github.com/Purugru/Legal-Minds/blob/8caab41e5d8876148c0855bd02c5f5a6542ec610/ui/Sign%20in.png)
+
+## Home
+![Home Page](https://github.com/Purugru/Legal-Minds/blob/8caab41e5d8876148c0855bd02c5f5a6542ec610/ui/home.png)
+
+## Analyze
+![Analyze](https://github.com/Purugru/Legal-Minds/blob/8caab41e5d8876148c0855bd02c5f5a6542ec610/ui/main%20chat.png)
+
+## History
+![History Page](https://github.com/Purugru/Legal-Minds/blob/8caab41e5d8876148c0855bd02c5f5a6542ec610/ui/history.png)
+
+## About
+![About Page](https://github.com/Purugru/Legal-Minds/blob/8caab41e5d8876148c0855bd02c5f5a6542ec610/ui/about.png)
+
+## Contact Us
+![Contact Us Page](https://github.com/Purugru/Legal-Minds/blob/8caab41e5d8876148c0855bd02c5f5a6542ec610/ui/contact.png)
+
+
+
